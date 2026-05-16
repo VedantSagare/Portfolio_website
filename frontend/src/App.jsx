@@ -99,10 +99,10 @@ const FALLBACK_DATA = {
     cpi: '7.89/10',
   },
   socialLinks: [
-    { name: 'LinkedIn', url: 'https://linkedin.com/in/vedantsagare', icon: 'linkedin' },
-    { name: 'GitHub', url: 'https://github.com/vedantsagare', icon: 'github' },
-    { name: 'LeetCode', url: 'https://leetcode.com/vedantsagare', icon: 'leetcode' },
-    { name: 'GeeksforGeeks', url: 'https://geeksforgeeks.org/user/vedantsagare', icon: 'gfg' },
+    { name: 'LinkedIn', url: 'www.linkedin.com/in/vedant-sagare-9b4249227', icon: 'linkedin' },
+    { name: 'GitHub', url: 'https://github.com/VedantSagare', icon: 'github' },
+    { name: 'LeetCode', url: 'https://leetcode.com/u/Sagre0503/', icon: 'leetcode' },
+    { name: 'GeeksforGeeks', url: 'https://www.geeksforgeeks.org/profile/sagarevedant', icon: 'gfg' },
     { name: 'Email', url: 'mailto:vedantsagare2002@gmail.com', icon: 'email' },
   ],
 };
