@@ -1,0 +1,24 @@
+# Java
+backend/target/
+*.class
+*.jar
+*.war
+*.ear
+
+# Node
+frontend/node_modules/
+frontend/dist/
+.eslintcache
+
+# IDEs
+.idea/
+*.iml
+.vscode/
+.DS_Store
+
+# Logs
+*.log
+
+# Environment variables
+.env
+.env.local
