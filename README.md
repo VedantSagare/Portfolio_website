@@ -1,6 +1,6 @@
 # Vedant Sagare - Professional Portfolio
 
-A modern, high-performance, full-stack portfolio website showcasing the technical journey, skills, and projects of Vedant Sagare. This project features a React-based frontend with stunning glassmorphism aesthetics and a robust Spring Boot backend for data management.
+A modern, high-performance portfolio website showcasing the technical journey, skills, and projects of Vedant Sagare. This project features a React-based frontend with stunning glassmorphism aesthetics, designed to be completely static and easily hostable on platforms like Vercel, Netlify, or GitHub Pages.
 
 ## 🚀 Live Demo
 [Coming Soon / Your Deployment Link Here]
@@ -12,77 +12,61 @@ A modern, high-performance, full-stack portfolio website showcasing the technica
 - **Interactive Background**: Particle background system for an engaging user experience.
 - **Responsive Design**: Fully optimized for mobile, tablet, and desktop screens.
 - **Micro-animations**: Subtle hover effects and transitions using Vanilla CSS and Framer Motion.
-- **Backend API**: Spring Boot REST API for managing portfolio data and contact form submissions.
-- **Database**: H2 Database (In-memory) for easy setup and testing.
-- **Fallback Support**: Seamlessly handles backend unavailability with comprehensive local fallback data.
 
 ## 🛠️ Tech Stack
 
-### Frontend
 - **Framework**: React.js (Vite)
 - **Styling**: Vanilla CSS (Custom Glassmorphism System)
 - **Animations**: Framer Motion
-- **Icons**: FontAwesome / Custom SVG
-
-### Backend
-- **Framework**: Java Spring Boot
-- **Database**: H2 Database (JPA/Hibernate)
-- **API**: RESTful Services
-- **Validation**: Spring Boot Starter Validation
+- **Icons**: Custom SVG
 
 ## 📂 Project Structure
 
 ```
 Portfolio_Website/
 ├── frontend/               # React + Vite application
+│   ├── public/             # Static assets
 │   ├── src/
-│   │   ├── api/           # API service layers
 │   │   ├── components/    # Reusable UI components
-│   │   └── App.jsx        # Main application entry
-├── backend/                # Spring Boot application
-│   ├── src/
-│   │   ├── main/
-│   │   │   ├── java/      # Java source code
-│   │   │   └── resources/ # Configuration and static assets
-│   └── pom.xml            # Maven dependencies
-└── README.md               # Project documentation
+│   │   ├── data/          # Static portfolio content (portfolioData.js)
+│   │   ├── hooks/         # Custom React hooks
+│   │   ├── App.jsx        # Main application entry
+│   │   └── main.jsx       # React DOM rendering
+├── README.md               # Project documentation
 ```
 
 ## ⚙️ Getting Started
 
 ### Prerequisites
 - Node.js (v18+)
-- Java JDK 17+
-- Maven
 
 ### Installation & Setup
 
 1. **Clone the repository**
    ```bash
    git clone https://github.com/vedantsagare/portfolio-website.git
-   cd Portfolio_Website
+   cd Portfolio_Website/frontend
    ```
 
-2. **Frontend Setup**
+2. **Install dependencies**
    ```bash
-   cd frontend
    npm install
+   ```
+
+3. **Run development server**
+   ```bash
    npm run dev
    ```
-   The frontend will be available at `http://localhost:5173`.
+   The application will be available at `http://localhost:5173`.
 
-3. **Backend Setup**
-   ```bash
-   cd backend
-   ./mvnw spring-boot:run
-   ```
-   The backend API will be available at `http://localhost:8080`.
+## 📝 Customization
+All portfolio data (Experience, Projects, Skills, etc.) is conveniently stored in `src/data/portfolioData.js`. You can easily update this single file to change the content across the entire website.
 
-## 📝 Contact
+## 📬 Contact
 **Vedant Sagare**  
 Email: [vedantsagare2002@gmail.com](mailto:vedantsagare2002@gmail.com)  
-LinkedIn: [linkedin.com/in/vedantsagare](https://linkedin.com/in/vedantsagare)  
-GitHub: [github.com/vedantsagare](https://github.com/vedantsagare)
+LinkedIn: [linkedin.com/in/vedantsagare](https://www.linkedin.com/in/vedant-sagare-9b4249227/)  
+GitHub: [github.com/VedantSagare](https://github.com/VedantSagare)
 
 ---
 Developed with ❤️ by Vedant Sagare

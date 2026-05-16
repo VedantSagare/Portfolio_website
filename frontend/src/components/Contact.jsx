@@ -1,32 +1,8 @@
-import { useState } from 'react';
 import { useScrollAnimation } from '../hooks/useScrollAnimation';
-import { submitContactForm } from '../api/portfolioApi';
 import './Contact.css';
 
 export default function Contact({ socialLinks }) {
   const ref = useScrollAnimation();
-  const [form, setForm] = useState({ name: '', email: '', subject: '', message: '' });
-  const [status, setStatus] = useState({ type: '', message: '' });
-  const [loading, setLoading] = useState(false);
-
-  const handleChange = (e) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setLoading(true);
-    setStatus({ type: '', message: '' });
-    try {
-      const res = await submitContactForm(form);
-      setStatus({ type: 'success', message: res.message || 'Message sent successfully!' });
-      setForm({ name: '', email: '', subject: '', message: '' });
-    } catch (err) {
-      setStatus({ type: 'error', message: 'Failed to send message. Please try again.' });
-    } finally {
-      setLoading(false);
-    }
-  };
 
   const socialIcons = {
     linkedin: (
@@ -53,37 +29,8 @@ export default function Contact({ socialLinks }) {
           <h2 className="section-title fade-in">Get In Touch</h2>
           <p className="section-subtitle fade-in">Let's work together</p>
         </div>
-        <div className="contact__grid">
-          <form className="contact__form glass-card fade-in-left" onSubmit={handleSubmit} id="contact-form">
-            <div className="contact__form-row">
-              <div className="contact__field">
-                <label htmlFor="contact-name">Name</label>
-                <input type="text" id="contact-name" name="name" value={form.name} onChange={handleChange} required placeholder="Your name" />
-              </div>
-              <div className="contact__field">
-                <label htmlFor="contact-email">Email</label>
-                <input type="email" id="contact-email" name="email" value={form.email} onChange={handleChange} required placeholder="your@email.com" />
-              </div>
-            </div>
-            <div className="contact__field">
-              <label htmlFor="contact-subject">Subject</label>
-              <input type="text" id="contact-subject" name="subject" value={form.subject} onChange={handleChange} placeholder="What's this about?" />
-            </div>
-            <div className="contact__field">
-              <label htmlFor="contact-message">Message</label>
-              <textarea id="contact-message" name="message" rows="5" value={form.message} onChange={handleChange} required placeholder="Your message..."></textarea>
-            </div>
-            {status.message && (
-              <div className={`contact__status contact__status--${status.type}`}>
-                {status.message}
-              </div>
-            )}
-            <button type="submit" className="btn-gradient contact__submit" disabled={loading}>
-              {loading ? '⏳ Sending...' : '🚀 Send Message'}
-            </button>
-          </form>
-
-          <div className="contact__info fade-in-right">
+        <div className="contact__centered fade-in-up">
+          <div className="contact__info glass-card">
             <h3 className="contact__info-title">Let's Connect</h3>
             <p className="contact__info-text">
               Feel free to reach out for collaborations, opportunities, or just a friendly chat about technology!
