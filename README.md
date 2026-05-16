@@ -85,4 +85,3 @@ LinkedIn: [linkedin.com/in/vedantsagare](https://linkedin.com/in/vedantsagare)
 GitHub: [github.com/vedantsagare](https://github.com/vedantsagare)
 
 ---
-Developed with ❤️ by Vedant Sagare
