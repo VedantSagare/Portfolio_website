@@ -1,0 +1,105 @@
+import { useEffect, useRef } from 'react';
+import './ParticleBackground.css';
+
+export default function ParticleBackground() {
+  const canvasRef = useRef(null);
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    const ctx = canvas.getContext('2d');
+    let animationId;
+    let particles = [];
+    let mouseX = 0;
+    let mouseY = 0;
+
+    const resize = () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    };
+
+    const createParticles = () => {
+      particles = [];
+      const count = Math.floor((canvas.width * canvas.height) / 15000);
+      for (let i = 0; i < count; i++) {
+        particles.push({
+          x: Math.random() * canvas.width,
+          y: Math.random() * canvas.height,
+          vx: (Math.random() - 0.5) * 0.3,
+          vy: (Math.random() - 0.5) * 0.3,
+          radius: Math.random() * 1.5 + 0.5,
+          opacity: Math.random() * 0.4 + 0.1,
+        });
+      }
+    };
+
+    const drawParticles = () => {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+      particles.forEach((p, i) => {
+        p.x += p.vx;
+        p.y += p.vy;
+
+        if (p.x < 0) p.x = canvas.width;
+        if (p.x > canvas.width) p.x = 0;
+        if (p.y < 0) p.y = canvas.height;
+        if (p.y > canvas.height) p.y = 0;
+
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.radius, 0, Math.PI * 2);
+        ctx.fillStyle = `rgba(0, 210, 255, ${p.opacity})`;
+        ctx.fill();
+
+        // Connect nearby particles
+        for (let j = i + 1; j < particles.length; j++) {
+          const dx = particles[j].x - p.x;
+          const dy = particles[j].y - p.y;
+          const dist = Math.sqrt(dx * dx + dy * dy);
+
+          if (dist < 120) {
+            ctx.beginPath();
+            ctx.moveTo(p.x, p.y);
+            ctx.lineTo(particles[j].x, particles[j].y);
+            ctx.strokeStyle = `rgba(0, 210, 255, ${0.06 * (1 - dist / 120)})`;
+            ctx.lineWidth = 0.5;
+            ctx.stroke();
+          }
+        }
+
+        // Mouse interaction
+        const dxm = mouseX - p.x;
+        const dym = mouseY - p.y;
+        const distMouse = Math.sqrt(dxm * dxm + dym * dym);
+        if (distMouse < 150) {
+          ctx.beginPath();
+          ctx.moveTo(p.x, p.y);
+          ctx.lineTo(mouseX, mouseY);
+          ctx.strokeStyle = `rgba(123, 47, 247, ${0.15 * (1 - distMouse / 150)})`;
+          ctx.lineWidth = 0.6;
+          ctx.stroke();
+        }
+      });
+
+      animationId = requestAnimationFrame(drawParticles);
+    };
+
+    const handleMouseMove = (e) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+    };
+
+    resize();
+    createParticles();
+    drawParticles();
+
+    window.addEventListener('resize', () => { resize(); createParticles(); });
+    window.addEventListener('mousemove', handleMouseMove);
+
+    return () => {
+      cancelAnimationFrame(animationId);
+      window.removeEventListener('resize', resize);
+      window.removeEventListener('mousemove', handleMouseMove);
+    };
+  }, []);
+
+  return <canvas ref={canvasRef} className="particle-canvas" />;
+}

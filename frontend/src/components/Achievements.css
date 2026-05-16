@@ -1,0 +1,35 @@
+.achievements__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 28px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.achievements__card {
+  padding: 36px 28px;
+  text-align: center;
+}
+
+.achievements__icon {
+  font-size: 3rem;
+  margin-bottom: 16px;
+  animation: float 4s ease-in-out infinite;
+}
+
+.achievements__title {
+  font-size: 1.15rem;
+  color: var(--text-primary);
+  margin-bottom: 12px;
+  font-weight: 700;
+}
+
+.achievements__desc {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+@media (max-width: 600px) {
+  .achievements__grid { grid-template-columns: 1fr; }
+}
